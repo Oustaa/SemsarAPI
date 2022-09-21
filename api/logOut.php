@@ -10,8 +10,6 @@ session_start();
 $database = new Database();
 $db = $database->connect();
 
-
-
 $connexion = new Connexion($db);
 $connect = $connexion->LogOut();
 

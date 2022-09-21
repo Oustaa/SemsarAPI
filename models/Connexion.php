@@ -30,8 +30,8 @@ class Connexion
 
   if ($stmt->rowCount() != 0) {
    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-   $_SESSION['userId'] = $result['id'];
-   return $result['id'];
+
+   return $result;
   } else {
    return '';
   }

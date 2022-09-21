@@ -5,26 +5,22 @@ header('Content-Type: application/json');
 include_once '../../config/Database.php';
 include_once '../../models/Items.php';
 
-session_start();
-$_SESSION['userId'] = 3;
-
 
 $database = new Database();
 $db = $database->connect();
 
 
 $post = new House($db);
+$id = (isset($_GET["userId"]) && !empty(($_GET["userId"]))) ?  $_GET["userId"] : 0;
 
-$result = $post->read($_GET);
+$result = $post->read($id);
 
 $num = $result->rowCount();
 
 if ($num > 0) {
  $houseRent = [];
 
-
  while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
   array_push($houseRent, $row);
  }
 

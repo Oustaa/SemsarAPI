@@ -17,4 +17,4 @@ $password = $_GET['psw'];
 $connexion = new Connexion($db);
 $connect  = $connexion->connect($username, $password);
 
-echo $connect;
+echo json_encode($connect);

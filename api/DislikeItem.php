@@ -7,16 +7,12 @@ include_once '../config/Database.php';
 include_once '../models/LIkeItem.php';
 include_once '../models/Connexion.php';
 
-session_start();
-$_SESSION['userId'] = 3;
+
 
 $database = new Database();
 $db = $database->connect();
 
-$connect = new Connexion($db);
-
-$userId = $connect->isConnected("return")['id'];
-
+$userId = $_GET['userId'];
 $itemId = $_GET['iId'];
 
 $test = new Like($db);
