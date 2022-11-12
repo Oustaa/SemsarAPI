@@ -15,6 +15,6 @@ $itemId = $_GET['iId'];
 $userId = $_GET['userId'];
 
 
-$test = new Like($db);
+$like = new Like($db);
 
-$test->likeItem($itemId, $userId);
+$like->likeItem($itemId, $userId);

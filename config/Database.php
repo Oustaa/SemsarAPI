@@ -3,7 +3,7 @@
 class Database
 {
  private $host = "localhost";
- private $db_name = "semsare";
+ private $db_name = "semsar";
  private $username = "root";
  private $password = "";
  private $conn;

@@ -1,28 +1,39 @@
 <?php
-
-
 class House
 {
  private $conn;
- private $table = 'item';
- private $id;
 
  function __construct($db)
  {
   $this->conn = $db;
  }
 
- public function read($id)
+ public function readHome($id)
+ {
+  $data = [];
+
+  $data['rent'] = $this->readRent($id)->fetchAll(PDO::FETCH_ASSOC);
+
+  $data['buy'] = $this->readBuy($id)->fetchAll(PDO::FETCH_ASSOC);
+
+  return $data;
+ }
+
+ public function readRent($id)
  {
 
-  $query = "SELECT r.id, r.title,r.description,r.added_at,r.price,r.Adress,r.id in (SELECT favorite.ItemId FROM favorite  WHERE favorite.userId = $id) as liked, t.label,i.url as img
-  FROM item r
-  INNER JOIN typs t
-  INNER JOIN imgs i
-  ON r.id = i.Product_id
-  WHERE t.typeid = r.contractId && r.id = i.Product_id
-  GROUP BY r.id
-  ";
+  $query = "call readRentData($id)";
+
+  $stmt = $this->conn->prepare($query);
+
+  $stmt->execute();
+
+  return $stmt;
+ }
+
+ public function readBuy($id)
+ {
+  $query = "call readBuyData($id)";
 
   $stmt = $this->conn->prepare($query);
 
@@ -57,5 +68,15 @@ class House
   $row['Comments'] = $stmtimg->fetchAll(PDO::FETCH_ASSOC);
 
   return $row;
+ }
+
+ public function readItems($storeId, $userID)
+ {
+  $query = "CALL readSotreItem(?,?)";
+  $stmt = $this->conn->prepare($query);
+
+  $stmt->execute([$storeId, $userID]);
+
+  return $stmt;
  }
 }

@@ -15,6 +15,6 @@ $db = $database->connect();
 $userId = $_GET['userId'];
 $itemId = $_GET['iId'];
 
-$test = new Like($db);
+$dislike = new Like($db);
 
-$test->dislikeItem($itemId, $userId);
+$dislike->dislikeItem($itemId, $userId);

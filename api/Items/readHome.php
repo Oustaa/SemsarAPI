@@ -10,21 +10,9 @@ $database = new Database();
 $db = $database->connect();
 
 
-$post = new House($db);
+$Houses = new House($db);
 $id = (isset($_GET["userId"]) && !empty(($_GET["userId"]))) ?  $_GET["userId"] : 0;
 
-$result = $post->read($id);
+$result = $Houses->readHome($id);
 
-$num = $result->rowCount();
-
-if ($num > 0) {
- $houseRent = [];
-
- while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-  array_push($houseRent, $row);
- }
-
- echo json_encode($houseRent);
-} else {
- echo "No post Found";
-}
+echo json_encode($result);
