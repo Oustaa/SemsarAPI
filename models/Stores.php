@@ -35,16 +35,15 @@ class Store
   return $result;
  }
 
- private function storeOwner($storeId)
- {
-  $query = "SELECT user_Id FROM stores WHERE Store_Id = ?";
+ public function bookReservation ($dateStart,$dateEnd,$itemRes,$userRes) {
+  echo $dateStart . " " . $dateEnd . " " . $itemRes . " " .$userRes;
+
+  $query = "call BookReservation(?,?,?,?)";
 
   $stmt = $this->conn->prepare($query);
 
-  $stmt->execute([$storeId]);
+  $stmt->execute([$dateStart,$dateEnd,$itemRes,$userRes]);
 
-  $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-  return $result['user_Id'];
  }
+
 }

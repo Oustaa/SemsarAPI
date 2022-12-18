@@ -18,13 +18,13 @@
 
 - http://localhost/Semsar.com/api/SignIn?[userName=KhalidTai]&[lname=khalid]&[fname=tailba]&[password=1245]&[email=test@email.com]&[tele=0214578963]&[birthday=2008-10-15]
 
-## Api to Create A store To be able to add items
+## Api to Create A store To be able to add items [✔ Done]
 
-- http://localhost/Semsar.com/Api/createStore
+- http://localhost/Semsar.com/api/Store/create?storeName=My%20store&userId=1
 
-## Api to get store Items
+## Api to get store Items [✔ Done]
 
-- http://localhost/Semsar.com/API/store/read?[storeId=2&userId=3]
+- http://localhost/Semsar.com/API/store/read?[storeId=2]&[userId=-1]
 
 ## Api to add items
 
@@ -41,6 +41,6 @@
 
 - http://localhost/Semsar.com/api/DislikeItem?[iId=15424&userId=54512]
 
-## Api to reserve in a rent somewhere
+## Api to reserve in a rent somewhere [✔ Done]
 
 - http://localhost/Semsar.com/api/reserve?[dateStart=2022-07-23&dateEnd=2022-07-24&itemRes=2&userRes=2]

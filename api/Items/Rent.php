@@ -17,6 +17,7 @@ $result = $post->readRent($id);
 
 $num = $result->rowCount();
 
+ 
 if ($num > 0) {
  $houseRent = [];
 
